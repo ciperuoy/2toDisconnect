@@ -10,15 +10,9 @@ namespace _2toDisconnect
     {
         public void Update()
         {
-            var input = ControllerInputPoller.instance.leftControllerSecondaryButton && ControllerInputPoller.instance.rightControllerSecondaryButton || Keyboard.current.yKey.isPressed && Keyboard.current.bKey.isPressed;
-
-            if (input && PhotonNetwork.InRoom)
+            if (ControllerInputPoller.instance.leftControllerSecondaryButton && ControllerInputPoller.instance.rightControllerSecondaryButton || Keyboard.current.yKey.isPressed && Keyboard.current.bKey.isPressed)
             {
                 NetworkSystem.Instance.ReturnToSinglePlayer();
-            }
-            else if (input && !PhotonNetwork.InRoom)
-            {
-                Debug.LogError("2toDisconnect Error: Not in room!");
             }
         }
     }
